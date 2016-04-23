@@ -96,13 +96,17 @@ public class Luckey {
 	//实现抽奖
 	public static void luckey(){
 		int lcardId[] = new int[5];
-		
-		for (int i = 0; i < lcardId.length; i++) {
-			lcardId[i] = (int) (Math.random()*10000);
-		}
+	
 		//抽取幸运卡号
 		System.out.println("本日的幸运卡号为：");
 		for (int i = 0; i < lcardId.length; i++) {
+			lcardId[i] = (int) (Math.random()*10000);
+			for (int j = 0; j < i; j++) {
+				if (lcardId[i]==lcardId[j]) {
+					lcardId[i] = (int) (Math.random()*8999+1000);
+					j=-1;
+				}
+			}
 			System.out.println(lcardId[i] + "  ");
 		}
 		//判断会员卡号和幸运卡是否相等
